@@ -5,9 +5,22 @@ import matplotlib.pyplot as plt
 import requests
 
 try:
-    df = pd.read_csv(join(dirname(realpath(__file__)),"data",'data_test.csv'))
+    df = pd.read_csv(join("data",'data_test.csv'))
 except:
     raise 'No application train data is available, please check the csv file.'
+
+st.sidebar.write("""
+        ## Filters
+        Select the filter that you want and wait
+        """)
+
+# Selected ID Customer
+list_custId = ['< No id selecte >']
+for id in df['SK_ID_CURR'].sort_values().to_list():
+    list_custId.append(id)
+id_to_filter = st.sidebar.selectbox('Select the customer id :'
+                    , list_custId
+                    )
 
 catCol = []
 numCol = []
@@ -29,7 +42,7 @@ selected_global_feat_imp = st.sidebar.checkbox('Global importance of data in the
 if selected_global_feat_imp:
     st.subheader(f"Global importance of data in the decision loan")
     # graph of features importances model
-    res = requests.get(f"http://127.0.0.1:8000/features_importances")
+    res = requests.get(f"https://blandine-duclos-api-model.herokuapp.com/features_importances")
     results = res.json()
     df_feat_imp = pd.DataFrame(results.get("feat_imp"))
     fig, ax = plt.subplots()
@@ -38,19 +51,6 @@ if selected_global_feat_imp:
         )
     st.pyplot(fig)
 
-st.sidebar.write("""
-        ## Filters
-        Select the filter that you want and wait
-        """)
-
-# Selected ID Customer
-list_custId = ['< No id selecte >']
-for id in df['SK_ID_CURR'].sort_values().to_list():
-    list_custId.append(id)
-id_to_filter = st.sidebar.selectbox('Select the customer id :'
-                    , list_custId
-                    )
-
 if id_to_filter != '< No id selecte >':
     filtered_data = df[df['SK_ID_CURR'] == int(id_to_filter)]
     filtered_data = filtered_data.iloc[:,1:]
@@ -58,7 +58,7 @@ if id_to_filter != '< No id selecte >':
     selected_data = st.sidebar.checkbox("Customer's data")
     with st.spinner('Calculating...'):
         id_loan = {"loan": str(id_to_filter)}
-        res = requests.post(f"https://git.heroku.com/blandine-duclos-api-model.git/predict/{id_to_filter}"
+        res = requests.post(f"https://blandine-duclos-api-model.herokuapp.com/predict/{id_to_filter}"
                             , json = {"LoanID": int(id_to_filter)}
                             )
         results = res.json()
