@@ -1,4 +1,0 @@
-datafiles/* filter=lfs diff=lfs merge=lfs -text
-*.csv filter=lfs diff=lfs merge=lfs -text
-API/dataviz/* filter=lfs diff=lfs merge=lfs -text
-dashboard/data/* filter=lfs diff=lfs merge=lfs -text
