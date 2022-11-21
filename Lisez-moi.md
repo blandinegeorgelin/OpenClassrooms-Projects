@@ -18,11 +18,11 @@ Compétences acquises :
 
 Commentaires de l'évaluation :
  - __Définir le cadre de votre formation :__
-  - Ayant déjà un parcours en lien avec la formation, les objectifs professionels de Blandine sont très clair et cohérent à la fois avec le contenu de la formation mais aussi avec ces études.
+`* Ayant déjà un parcours en lien avec la formation, les objectifs professionels de Blandine sont très clair et cohérent à la fois avec le contenu de la formation mais aussi avec ces études.
  - __Points forts :__ 
-  - Planning détaillé (annuel et hebdomadaire), paragraphe de présentation concis et clair.
+`* Planning détaillé (annuel et hebdomadaire), paragraphe de présentation concis et clair.
  - __Remarques :__ 
-  - Blandine avait bien préparé la soutenance, ce qui donne une présentation agréable et fluide.
+`* Blandine avait bien préparé la soutenance, ce qui donne une présentation agréable et fluide.
 
 ## Projet 2 : Analysez des données de systèmes éducatifs <a name="projet-2"></a>
 Compétences acquises : 
